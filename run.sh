@@ -21,7 +21,8 @@ if [ "$LOCAL_VER" = "$REMOTE_VER" ]; then
     echo "Up to date."
 else
     # Run the update in an interactive terminal for the user
-    gnome-terminal --wait -- /home/benjamin/discord/install-update.sh $DISCORD_URL $LOCAL_VER $REMOTE_VER
+    SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+    gnome-terminal --wait -- "$SCRIPT_DIR/install-update.sh" $DISCORD_URL $LOCAL_VER $REMOTE_VER
     if [ $? -ne 0 ]; then
         exit 1
     fi
